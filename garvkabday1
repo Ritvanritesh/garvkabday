@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Bday, Garv! 🎉</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            text-align: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 3rem;
+            animation: bounce 1.5s infinite;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+        .message-box {
+            font-size: 2rem;
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+        }
+        .hidden {
+            display: none;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            margin: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            color: #ffcc00;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        .star {
+            position: absolute;
+            font-size: 1rem;
+            color: white;
+            animation: twinkle 3s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+        .cake-img {
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
+        }
+        .music-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">It's your special day, Bro! 🎉🎈</div>
+    <p>Wishing you all the happiness in the world! Have an epic birthday! 🎂🔥</p>
+    <button id="mainButton" onclick="advanceStage()">Turn on Light</button>
+    
+    <img id="bdayImage" class="hidden" src="happy-birthday-boy.jpg" alt="Happy Birthday">
+    <img id="cakeImage" class="hidden cake-img" src="birthday-cake.jpg" alt="Birthday Cake">
+    
+    <p id="finalMessage" class="hidden">Happy Birthday, bro! May this year be filled with adventure and success! 🚀🎂</p>
+
+    <div id="musicSection" class="hidden music-buttons">
+        <button onclick="playSong('song1')">Play Birthday Song 1 🎶</button>
+        
+    </div>
+
+    <audio id="song1" src="g1/gsong1.mp3"></audio>
+    <audio id="song2" src="birthday-song2.mp3"></audio>
+
+    <script>
+        let stage = 0;
+        function advanceStage() {
+            let button = document.getElementById('mainButton');
+            let body = document.body;
+
+            if (stage === 0) {
+                body.style.background = "black";
+                button.innerText = "Play Music";
+            } else if (stage === 1) {
+                button.innerText = "Decorate";
+            } else if (stage === 2) {
+                for (let i = 0; i < 50; i++) {
+                    let star = document.createElement('div');
+                    star.innerHTML = '⭐';
+                    star.classList.add('star');
+                    star.style.left = Math.random() * 100 + 'vw';
+                    star.style.top = Math.random() * 100 + 'vh';
+                    document.body.appendChild(star);
+                }
+                button.innerText = "Fly Balloons";
+            } else if (stage === 3) {
+                let bdayImage = document.getElementById('bdayImage');
+                bdayImage.classList.remove('hidden');
+                button.innerText = "Let's Cut the Cake";
+            } else if (stage === 4) {
+                let cakeImage = document.getElementById('cakeImage');
+                cakeImage.classList.remove('hidden');
+                button.innerText = "Happy Birthday!";
+            } else if (stage === 5) {
+                document.getElementById('finalMessage').classList.remove('hidden');
+                document.getElementById('musicSection').classList.remove('hidden');
+                button.style.display = 'none';
+            }
+            stage++;
+        }
+
+        function playSong(songId) {
+            let song1 = document.getElementById('song1');
+            let song2 = document.getElementById('song2');
+
+            song1.pause();
+            song1.currentTime = 0;
+            song2.pause();
+            song2.currentTime = 0;
+
+            let selectedSong = document.getElementById(songId);
+            selectedSong.play();
+        }
+
+        function createHeart() {
+            let heart = document.createElement('div');
+            heart.innerHTML = '🔥';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
