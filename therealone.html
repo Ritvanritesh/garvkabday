@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Bday, Garv! 🎉</title>
+    <title>Happy Bday, Sehajveer! 🎉</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -129,11 +129,7 @@
 <!--         <button onclick="playSong('song2')">Play Birthday Song 2 🎶</button> -->
     </div>
 
-    <!-- Photo Frames Container -->
-    <div id="photoFrames" class="hidden photo-frame-container"></div>
 
-    <audio id="song1" src="g1/gsong1.mp3"></audio>
-    <audio id="song2" src="birthday-song2.mp3"></audio>
 
     <script>
         let stage = 0;
@@ -167,9 +163,7 @@
             } else if (stage === 5) {
                 document.getElementById('finalMessage').classList.remove('hidden');
                 document.getElementById('musicSection').classList.remove('hidden');
-                showPhotoFrames(); // Show photo frames
-                button.style.display = 'none';
-            }
+                
             stage++;
         }
 
@@ -191,22 +185,22 @@
             photoFrames.classList.remove('hidden');
 
             // Example image paths (replace with your actual image paths)
-            const imagePaths = [
-                "g1/g1.jpg",
-                "g1/g2.jpg",
-                "g1/g3.jpg",
-                "g1/g4.jpg"
-            ];
+            // const imagePaths = [
+            //     "g1/g1.jpg",
+            //     "g1/g2.jpg",
+            //     "g1/g3.jpg",
+            //     "g1/g4.jpg"
+            // ];
 
-            imagePaths.forEach(path => {
-                let frame = document.createElement('div');
-                frame.classList.add('photo-frame');
-                let img = document.createElement('img');
-                img.src = path; // Use the image path
-                img.alt = "Memory";
-                frame.appendChild(img);
-                photoFrames.appendChild(frame);
-            });
+            // imagePaths.forEach(path => {
+            //     let frame = document.createElement('div');
+            //     frame.classList.add('photo-frame');
+            //     let img = document.createElement('img');
+            //     img.src = path; // Use the image path
+            //     img.alt = "Memory";
+            //     frame.appendChild(img);
+            //     photoFrames.appendChild(frame);
+            // });
         }
 
         function createHeart() {
